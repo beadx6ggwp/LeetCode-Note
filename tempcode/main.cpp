@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
-int main(){
-    std::cout << "test";
+using namespace std;
+int main() {
+
     return 0;
 }
