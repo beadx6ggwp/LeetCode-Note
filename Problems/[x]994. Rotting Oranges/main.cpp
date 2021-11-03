@@ -19,8 +19,12 @@ int orangesRotting(vector<vector<int>>& grid) {
                 q.push(cell(r, c));
         }
     }
+
+    int days = 0;
     while (!q.empty()) {
+
         
+        days++;
     }
     return 0;
 }
