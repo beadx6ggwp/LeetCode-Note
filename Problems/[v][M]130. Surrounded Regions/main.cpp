@@ -21,16 +21,18 @@ void solve(vector<vector<char>> &board) {
         dfs(x, 0), dfs(x, h - 1);
     }
 
+    map<char, char> mp{{'K', 'O'}, {'O', 'X'}, {'X', 'X'}};
     for (int y = 0; y < h; y++) {
         for (int x = 0; x < w; x++) {
-            if (board[y][x] == 'O') {
-                board[y][x] = 'X';
-                continue;
-            }
-            if (board[y][x] == 'K') {
-                board[y][x] = 'O';
-                continue;
-            }
+            // if (board[y][x] == 'O') {
+            //     board[y][x] = 'X';
+            //     continue;
+            // }
+            // if (board[y][x] == 'K') {
+            //     board[y][x] = 'O';
+            //     continue;
+            // }
+            board[y][x] = mp[board[y][x]];
         }
     }
 }
