@@ -17,7 +17,8 @@ class Solution {
                 low = mid + 1;
             }
         }
-
+        // 如果過程中mid剛好就是答案時，像是要找26，這時L:22,M:26,H:31
+        // high = mid -1 => 25, 最後找完會是high = 25, low = 25 + 1
         return low;
     }
 
