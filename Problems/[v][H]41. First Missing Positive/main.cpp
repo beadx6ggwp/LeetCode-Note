@@ -138,6 +138,16 @@ class Solution {
         return N + 1;
     }
 };
+
+int firstMiss3(vector<int>& nums) {
+    int N = nums.size();
+    for (int i = 0; i < N; i++) nums[nums[i] - 1] = nums[i];
+
+    for (int i = 0; i < N; i++)
+        if (i + 1 != nums[i]) return i + 1;
+
+    return -1;
+}
 int main() {
     cout << "[]\n-----\n";
     vector<int> in = {5, 2, 1, 1, 2, 3, 5, 8};
