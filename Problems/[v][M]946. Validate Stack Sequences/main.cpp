@@ -15,6 +15,15 @@ class Solution {
 
         return st.empty();
     }
+    // O(1) space
+    bool validateStackSequences2(vector<int>& pushed, vector<int>& popped) {
+        int st = 0, now = 0;
+        for (int x : pushed) {
+            pushed[st++] = x;
+            while (st > 0 && pushed[st - 1] == popped[now]) --st, ++now;
+        }
+        return st == 0;
+    }
 };
 int main() {
     cout << "[]\n-----\n";
