@@ -2,6 +2,8 @@
 using namespace std;
 // 給定長度2n的陣列每項為[A,B] 表示去A與B的cost，找出最少的cost，並確保有N個人去其中一個城市
 // 也就是說A與B各要去一半的人
+
+// 解法，先讓所有人去A，再看說哪些人改去B會省比較多
 class Solution {
    public:
     int twoCitySchedCost(vector<vector<int>>& costs) {
@@ -9,9 +11,11 @@ class Solution {
         vector<int> diff;
         int total = 0, totalB = 0;
         for (auto cost : costs) {
+            // 紀錄這個人改去B的話，能少多少
             diff.push_back(cost[1] - cost[0]);
             total += cost[0];
         }
+        // 然後從減少最多的開始
         sort(diff.begin(), diff.end());
         for (int i = 0; i < costs.size() / 2; i++) {
             total += diff[i];
