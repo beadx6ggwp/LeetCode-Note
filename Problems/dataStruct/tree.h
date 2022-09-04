@@ -60,6 +60,40 @@ TreeNode *createBinTree(vector<int> nums) {
     }
     return t;
 }
+TreeNode *createBinTreeByString(string input, char splitChar,
+                                string nullNodeStr = "null") {
+    // TreeNode *t = createBinTreeByString("3,9,20,null,null,15,7", ',');
+    TreeNode *root = nullptr;
+    stringstream ss(input);
+    string tok;
+    int num;
+    // std::getline(ss, tok, splitChar);
+
+    std::getline(ss, tok, splitChar);
+    if (tok == nullNodeStr)
+        return root;
+    else
+        root = new TreeNode(stoi(tok));
+
+    queue<TreeNode *> q;
+    q.push(root);
+    while (std::getline(ss, tok, splitChar)) {
+        TreeNode *now = q.front();
+        q.pop();
+
+        if (tok != nullNodeStr && now->left == nullptr) {
+            now->left = new TreeNode(stoi(tok));
+            q.push(now->left);
+        }
+        std::getline(ss, tok, splitChar);
+        if (tok != nullNodeStr && now->right == nullptr) {
+            now->right = new TreeNode(stoi(tok));
+            q.push(now->right);
+        }
+    }
+
+    return root;
+}
 void inorder(TreeNode *temp) {
     if (temp == NULL) return;
 
