@@ -1,3 +1,4 @@
+#pragma once
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -67,11 +68,9 @@ void inorder(TreeNode *temp) {
     inorder(temp->right);
 }
 
-void print(string s) { cout << s << "\n"; }
-
-int main() {
-    TreeNode *test1 = createBinTree({4, 2, 9, 3, 5, 0, 7});
-    inorder(test1);
-    cout << "\n";
-    return 0;
-}
+// int main() {
+//     TreeNode *test1 = createBinTree({4, 2, 9, 3, 5, 0, 7});
+//     inorder(test1);
+//     cout << "\n";
+//     return 0;
+// }
