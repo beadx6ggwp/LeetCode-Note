@@ -77,7 +77,7 @@ TreeNode *createBinTreeByString(string input, char splitChar,
 
     queue<TreeNode *> q;
     q.push(root);
-    while (std::getline(ss, tok, splitChar)) {
+    while (getline(ss, tok, splitChar)) {
         TreeNode *now = q.front();
         q.pop();
 
@@ -85,7 +85,7 @@ TreeNode *createBinTreeByString(string input, char splitChar,
             now->left = new TreeNode(stoi(tok));
             q.push(now->left);
         }
-        std::getline(ss, tok, splitChar);
+        if (!getline(ss, tok, splitChar)) continue;
         if (tok != nullNodeStr && now->right == nullptr) {
             now->right = new TreeNode(stoi(tok));
             q.push(now->right);
