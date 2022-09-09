@@ -48,6 +48,27 @@ class Solution {
 
         return result;
     }
+    int numberOfWeakCharacters3(vector<vector<int>>& properties) {
+        int res = 0;
+        map<int, int> mp;
+        for (auto& p : properties) mp[p[0]] = max(mp[p[0]], p[1]);
+
+        int maxi = 0;
+        // make the value the largest value of defence above current value
+        for (auto iter = mp.rbegin(); iter != mp.rend(); ++iter) {
+            maxi = max(maxi, iter->second);
+            iter->second = maxi;
+        }
+
+        for (auto& p : properties) {
+            auto it = mp.upper_bound(p[0]);
+            if (it != mp.end() && it->second > p[1]) {
+                res++;
+            }
+        }
+
+        return res;
+    }
 };
 int main() {
     cout << "[1996. The Number of Weak Characters in the Game]\n-----\n";
